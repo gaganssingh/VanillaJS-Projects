@@ -4,9 +4,8 @@ const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 
 // FUNCTIONS
-addTodo = (event) => {
+handleAddTodo = (event) => {
     event.preventDefault();
-    console.log(todoInput.value);
 
     // create the div container for new todo
     const todoDiv = document.createElement("div");
@@ -39,5 +38,22 @@ addTodo = (event) => {
     todoInput.value = "";
 };
 
+handleCheckDeleteTodo = (event) => {
+    const item = event.target;
+
+    // Handle todo check-off
+    if (item.classList[0] === "complete-btn") {
+        const todo = item.parentElement;
+        todo.classList.toggle("completed");
+    }
+
+    // Handle todo deletion
+    if (item.classList[0] === "trash-btn") {
+        const todo = item.parentElement;
+        todo.remove();
+    }
+};
+
 // EVENT LISTENERS
-todoButton.addEventListener("click", addTodo);
+todoButton.addEventListener("click", handleAddTodo);
+todoList.addEventListener("click", handleCheckDeleteTodo);
