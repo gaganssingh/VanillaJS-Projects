@@ -67,35 +67,10 @@ handleCheckDeleteTodo = (event) => {
     }
 };
 
-// handleFilterTodo = (event) => {
-//     const todos = todoList.childNodes;
-//     todos.forEach((todo) => {
-//         switch (event.target.value) {
-//             case "all":
-//                 todo.style.display = "flex";
-//                 break;
-//             case "completed":
-//                 if (todo.classList.contains("completed")) {
-//                     todo.style.display = "flex";
-//                 } else {
-//                     todo.style.display = "none";
-//                 }
-//                 break;
-//             case "not-completed":
-//                 if (!todo.classList.contains("completed")) {
-//                     todo.style.display = "flex";
-//                 } else {
-//                     todo.style.display = "none";
-//                 }
-//                 break;
-//         }
-//     });
-// };
-
-function handleFilterTodo(e) {
+handleFilterTodo = (event) => {
     const todos = todoList.childNodes;
-    todos.forEach(function (todo) {
-        switch (e.target.value) {
+    todos.forEach((todo) => {
+        switch (event.target.value) {
             case "all":
                 todo.style.display = "flex";
                 break;
@@ -112,9 +87,10 @@ function handleFilterTodo(e) {
                 } else {
                     todo.style.display = "none";
                 }
+                break;
         }
     });
-}
+};
 
 // EVENT LISTENERS
 todoButton.addEventListener("click", handleAddTodo);
