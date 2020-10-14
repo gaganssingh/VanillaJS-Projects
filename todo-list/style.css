@@ -8,6 +8,8 @@
     --text-light: azure;
     --text-dark: black;
     --primary: #fda085;
+    --transY: 8rem;
+    --rotateZ: 90deg;
 }
 
 body {
@@ -68,6 +70,7 @@ form button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.5s ease;
 }
 
 .todo li {
@@ -85,4 +88,18 @@ form button:hover {
 
 .todo-item {
     padding: 0 0.5rem;
+}
+
+.fa-trash,
+.fa-check {
+    pointer-events: none;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+.fall {
+    transform: translateY(var(--transY)) rotateZ(var(--rotateZ));
+    opacity: 1;
 }

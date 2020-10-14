@@ -50,7 +50,19 @@ handleCheckDeleteTodo = (event) => {
     // Handle todo deletion
     if (item.classList[0] === "trash-btn") {
         const todo = item.parentElement;
-        todo.remove();
+
+        // Todo remove animation
+        todo.classList.add("fall");
+
+        // **** Todo remove animation styling****
+        const fall = document.querySelector(".fall");
+        const transY = Math.random() * 9;
+        const rotateZ = Math.random() * 21;
+        fall.style.setProperty("--transY", transY + "rem");
+        fall.style.setProperty("--rotateZ", rotateZ + "deg");
+        // ***************************************
+        // Remove the actual DOM node after animation ends
+        todo.addEventListener("transitionend", () => todo.remove());
     }
 };
 
