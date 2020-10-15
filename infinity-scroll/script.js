@@ -9,7 +9,7 @@ let imagesLoaded = 0;
 let totalImages = 0;
 let pageNumber = 1;
 
-const limit = 30;
+let noOfPhotosToFetch = 5;
 const imageUrl = `https://picsum.photos/v2/list`;
 
 // FUNCTIONS
@@ -65,9 +65,10 @@ showPhotosInDOM = () => {
 fetchPhotos = async (pageNumber = 1) => {
     try {
         const response = await fetch(
-            `${imageUrl}/?limit=${limit}&page=${pageNumber}`
+            `${imageUrl}/?limit=${noOfPhotosToFetch}&page=${pageNumber}`
         );
         photosArray = await response.json();
+        console.log(photosArray);
         showPhotosInDOM();
     } catch (error) {
         console.log(error);
@@ -83,6 +84,7 @@ window.addEventListener("scroll", () => {
     ) {
         ready = false;
         pageNumber++;
+        noOfPhotosToFetch = 30;
         fetchPhotos(pageNumber);
     }
 });
