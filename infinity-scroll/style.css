@@ -54,7 +54,7 @@ h1 {
 
 /* image container */
 .image-container {
-    margin: 10px 30%;
+    margin: 10px 20%;
 }
 
 .image-container img {
@@ -63,8 +63,8 @@ h1 {
 }
 
 /* Tablet and Large Smartphones */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .image-container {
-        margin: 10px;
+        margin: 10px 10%;
     }
 }
