@@ -5,13 +5,13 @@ const authorText = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
 const newQuoteBtn = document.getElementById("new-quote");
 
-// Base url for quotes api
-// quotes api documentation available at https://github.com/lukePeavey/quotable
-const baseUrl = `https://api.quotable.io`;
-
 // FUNCTIONS
 // fetch quote from api
 getQuote = async () => {
+    // Base url for quotes api
+    // quotes api documentation available at https://github.com/lukePeavey/quotable
+    const baseUrl = `https://api.quotable.io`;
+
     try {
         const response = await fetch(`${baseUrl}/random`);
         const data = await response.json();
@@ -31,6 +31,18 @@ getQuote = async () => {
         console.log("Something went wrong :(", error);
     }
 };
+
+// Tweet quote on button press
+tweetQuote = () => {
+    const quote = quoteText.innerText;
+    const author = authorText.innerText;
+    const twitterURL = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+    window.open(twitterURL, "_blank");
+};
+
+// EVENT LISTENERS
+newQuoteBtn.addEventListener("click", getQuote);
+twitterBtn.addEventListener("click", tweetQuote);
 
 // On page load
 getQuote();
