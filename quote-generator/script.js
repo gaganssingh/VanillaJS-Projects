@@ -4,10 +4,28 @@ const quoteText = document.getElementById("quote");
 const authorText = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
 const newQuoteBtn = document.getElementById("new-quote");
+const loader = document.getElementById("loader");
 
 // FUNCTIONS
+// Show Loader
+showLoader = () => {
+    loader.hidden = false;
+    quoteContainer.hidden = true;
+};
+
+// Hide Loader
+hideLoader = () => {
+    if (!loader.hidden) {
+        quoteContainer.hidden = false;
+        loader.hidden = true;
+    }
+};
+
 // fetch quote from api
 getQuote = async () => {
+    // Show loading spinner until data is fetched and inserted into DOM
+    showLoader();
+
     // Base url for quotes api
     // quotes api documentation available at https://github.com/lukePeavey/quotable
     const baseUrl = `https://api.quotable.io`;
@@ -26,6 +44,9 @@ getQuote = async () => {
         } else {
             quoteText.classList.remove("long-quote");
         }
+
+        // Hide loading spinner and display quote
+        hideLoader();
     } catch (error) {
         getQuote();
         console.log("Something went wrong :(", error);
